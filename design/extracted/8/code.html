@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StockPro - POS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0b1326",
+                        "outline": "#918fa1",
+                        "on-secondary-fixed": "#00201d",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "surface-container-high": "#222a3d",
+                        "on-secondary-container": "#00302b",
+                        "inverse-on-surface": "#283044",
+                        "background": "#0b1326",
+                        "on-surface": "#dae2fd",
+                        "inverse-surface": "#dae2fd",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "secondary-container": "#29a195",
+                        "tertiary-container": "#a04500",
+                        "secondary": "#6bd8cb",
+                        "on-tertiary-fixed": "#341100",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-primary-fixed": "#0f0069",
+                        "on-background": "#dae2fd",
+                        "on-secondary": "#003732",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "surface-bright": "#31394d",
+                        "on-tertiary-container": "#ffd2bd",
+                        "surface-container-low": "#131b2e",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "tertiary": "#ffb690",
+                        "surface": "#0b1326",
+                        "on-primary": "#1d00a5",
+                        "inverse-primary": "#4d44e3",
+                        "error": "#ffb4ab",
+                        "on-tertiary": "#552100",
+                        "surface-container-highest": "#2d3449",
+                        "surface-container-lowest": "#060e20",
+                        "primary-fixed": "#e2dfff",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#4f46e5",
+                        "on-primary-container": "#dad7ff",
+                        "on-secondary-fixed-variant": "#005049",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#89f5e7",
+                        "outline-variant": "#464555",
+                        "surface-tint": "#c3c0ff",
+                        "error-container": "#93000a",
+                        "surface-variant": "#2d3449",
+                        "surface-container": "#171f33",
+                        "tertiary-fixed": "#ffdbca",
+                        "on-surface-variant": "#c7c4d8",
+                        "primary": "#c3c0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "md": "24px",
+                        "lg": "40px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "margin-desktop": "48px",
+                        "xl": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "title-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "title-md": ["20px", {"lineHeight": "28px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex antialiased">
+<aside class="w-[260px] h-screen fixed left-0 top-0 bg-surface-container shadow-sm flex flex-col py-6 px-4 gap-4 z-50 border-r border-outline-variant">
+<div class="flex flex-col mb-4 px-2">
+<h1 class="font-display-lg text-[32px] font-bold text-primary">StockPro</h1>
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant mt-1">Enterprise v2.0</span>
+</div>
+<button class="w-full bg-primary text-on-primary font-title-md text-[16px] py-2.5 rounded-lg flex items-center justify-center gap-2 mb-4 hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined">add</span>
+            New Entry
+        </button>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+                Products
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg font-label-sm text-label-sm uppercase text-on-secondary-container bg-secondary-container transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">point_of_sale</span>
+                Sales/POS
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">conveyor_belt</span>
+                Suppliers
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+                Analytics
+            </a>
+</nav>
+<div class="flex flex-col gap-1 mt-auto pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                Help Center
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg font-label-sm text-label-sm uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<main class="ml-[260px] flex-1 p-6 grid grid-cols-1 xl:grid-cols-12 gap-6 min-h-screen">
+<div class="xl:col-span-8 flex flex-col gap-6 h-full">
+<header class="flex justify-between items-end border-b border-outline-variant pb-4">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Point of Sale</h2>
+<p class="font-body-md text-sm text-on-surface-variant mt-1">Register 04 • Cashier: Admin</p>
+</div>
+</header>
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-4 text-outline">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg pl-12 pr-4 py-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all shadow-sm" placeholder="Scan barcode or search by product name/SKU..." type="text"/>
+<button class="absolute right-2 bg-surface-container hover:bg-surface-container-high text-on-surface p-1.5 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">barcode_scanner</span>
+</button>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-4 py-1.5 bg-primary-container text-on-primary-container rounded-full font-body-md text-sm whitespace-nowrap">All Items</button>
+<button class="px-4 py-1.5 bg-surface-container border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-full font-body-md text-sm whitespace-nowrap transition-colors">Packaging</button>
+<button class="px-4 py-1.5 bg-surface-container border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-full font-body-md text-sm whitespace-nowrap transition-colors">Equipment</button>
+<button class="px-4 py-1.5 bg-surface-container border border-outline-variant text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface rounded-full font-body-md text-sm whitespace-nowrap transition-colors">Safety Gear</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-y-auto pr-2 pb-4">
+<div class="bg-surface-container border border-outline-variant rounded-xl p-3 flex flex-col gap-2 shadow-sm hover:border-primary transition-all cursor-pointer group">
+<div class="w-full aspect-square bg-surface-container-lowest rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A close-up studio shot of a heavy-duty cardboard shipping box against a clean, minimal white background. The lighting is bright and even, highlighting the texture of the corrugated material. The overall aesthetic is functional and industrial, suited for a modern logistics interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmKh5Z1WKyym4lc_V5itFRAKPSZqreXmhSHi_drGYZRCO14u5y4L6B1maAVZcRE91Nig5QPHQlHaIxDb3lMHCjt-51KLy2y0pIDafZRJmuv2SguPLuVlFvtonL2IIBi8dOPnbBimAcWdoLBiFqsW2nUQuHeVQPiA-UpguUSJuM8sokyssfj32yQ2ThFIPXj6ELUvG80rupNhsfgcvHelTGj9HEFxP6Zgoxomzms9Vmx_EhzQ55Nh9UMST4DawwE7FLMS6NLqVoIDTn"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-[15px] font-medium text-on-surface line-clamp-1">Heavy Duty Box L</span>
+<span class="font-body-md text-sm text-primary tabular-nums mt-1">$4.50</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-xl p-3 flex flex-col gap-2 shadow-sm hover:border-primary transition-all cursor-pointer group">
+<div class="w-full aspect-square bg-surface-container-lowest rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A roll of clear industrial packing tape resting on a sleek metallic surface. High-key lighting creates sharp reflections on the plastic film. The composition is tight and utilitarian, emphasizing the object's purpose in a warehouse setting within a light-mode corporate design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD6B9nh1FMSg5V3Ft7eZxg0Sj2Ui_UZh-Axk9NsxUbQdpC-9Ek4CAe_jdFBDHO9WWcmk96c6XzZS7g0mruJx2kOwuYA5QKc2vmuecfnfQmjC8Mpd2BJ7JCD9ck5kW5xCy-XB1wVAELmjeOoMdGGFh7zagielfwV0LB7MjpW2hwmo8CFxHoSOqoOjYyftkJq0aaw0ECx4esjBlfFgSU8LZuw1OCOoq0bxWBX75Qd1DAKMbX_i2vxIa1Tpi8wrgTKOxq0hmVQe95ZV-V"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-[15px] font-medium text-on-surface line-clamp-1">Packing Tape Clear</span>
+<span class="font-body-md text-sm text-primary tabular-nums mt-1">$2.75</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-xl p-3 flex flex-col gap-2 shadow-sm hover:border-primary transition-all cursor-pointer group">
+<div class="w-full aspect-square bg-surface-container-lowest rounded-lg flex items-center justify-center overflow-hidden relative">
+<div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 opacity-60 grayscale" data-alt="A yellow industrial safety helmet shown from a slight angle on a stark white backdrop. The hard hat appears rugged yet clean. The lighting is clinical and uniform. The image conveys safety and compliance in a professional logistics or construction environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIRjwxSmnUM31nAP-DbwZDpQQ4vwtOIyuPAXsn7MU7TKXOKZyKhDxTZibygDwII-kli-H2Q5F-A8dxRYsUan_MDrQttaV1d6GB3iZRmbi1i9rdmy0eqA5dMknFg9ilEWY9rgwnFhJubHVaFaU9SG6EDmx2qY0Uc_nxBlsTJo5kiXcoa2ktLFS1z9bg5zmwrj6DKd1biTVNFb5XYxzSuYDtaHsDKFTi5N3xq4mo6fiGTppx-r1oXCUBQryxg9ROie1esy5vTCjQnnNt"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-[15px] font-medium text-on-surface line-clamp-1">Safety Helmet Ylw</span>
+<div class="flex items-center justify-between mt-1">
+<span class="font-body-md text-sm text-primary tabular-nums">$24.00</span>
+<span class="font-label-sm text-[10px] uppercase text-error font-bold">Out of Stock</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-xl p-3 flex flex-col gap-2 shadow-sm hover:border-primary transition-all cursor-pointer group">
+<div class="w-full aspect-square bg-surface-container-lowest rounded-lg flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A handheld digital barcode scanner resting on a modern, light grey desk. The scanner features a dark grey rugged casing with a small digital display. The lighting highlights its ergonomic design. The mood is efficient, technological, and perfectly suited for a high-end inventory management UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVo67c_PJgW24roYXaR_MxIWfbFgyQooyBwxSgdR6iNaEFv3nWo934tM1gBQPp5nJS8QUjtuAYRDl7FTFEU1nEe01HnbHYJVIvgvp2wgC5zmUvTr-aR-g90mUkGEwgGmYo905zOeKTz44_olT7KNMQDMbvzcZ2X9wERnfBt9sqR3Kr8XK7W73nj7fNHLV0Sx3PsCvSj6tmAUDLqd18p60DfY-MzHc2K0Qv0GBScR5yAXSs2tvMnDcCr9QbEKNUCuNne_Qrh9FQoCcw"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-[15px] font-medium text-on-surface line-clamp-1">Wireless Scanner V2</span>
+<span class="font-body-md text-sm text-primary tabular-nums mt-1">$145.00</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-xl p-3 flex flex-col gap-2 shadow-sm hover:border-primary transition-all cursor-pointer group">
+<div class="w-full aspect-square bg-surface-container-lowest rounded-lg flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-[48px] text-outline-variant group-hover:text-primary transition-colors">pallet</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-[15px] font-medium text-on-surface line-clamp-1">Standard Wood Pallet</span>
+<span class="font-body-md text-sm text-primary tabular-nums mt-1">$18.50</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant rounded-xl p-3 flex flex-col gap-2 shadow-sm hover:border-primary transition-all cursor-pointer group">
+<div class="w-full aspect-square bg-surface-container-lowest rounded-lg flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-[48px] text-outline-variant group-hover:text-primary transition-colors">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-[15px] font-medium text-on-surface line-clamp-1">Freight Charge Base</span>
+<span class="font-body-md text-sm text-primary tabular-nums mt-1">$50.00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="xl:col-span-4 h-[calc(100vh-48px)] sticky top-6">
+<div class="bg-surface-container border border-outline-variant rounded-xl shadow-sm h-full flex flex-col overflow-hidden">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-high">
+<h3 class="font-title-md text-title-md text-on-surface">Current Cart</h3>
+<button class="text-error hover:bg-error-container p-1 rounded transition-colors" title="Clear Cart">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-4">
+<div class="flex flex-col gap-2 pb-4 border-b border-outline-variant">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-[15px] text-on-surface font-medium">Heavy Duty Box L</span>
+<span class="font-body-md text-sm text-on-surface tabular-nums">$22.50</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center border border-outline-variant rounded bg-surface-container-highest h-8">
+<button class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-bright hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+<span class="w-10 text-center font-body-md text-sm tabular-nums text-on-surface">5</span>
+<button class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-bright hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[16px]">add</span></button>
+</div>
+<span class="font-body-md tabular-nums text-outline text-xs">@ $4.50/ea</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 pb-4 border-b border-outline-variant">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-[15px] text-on-surface font-medium">Packing Tape Clear</span>
+<span class="font-body-md text-sm text-on-surface tabular-nums">$5.50</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center border border-outline-variant rounded bg-surface-container-highest h-8">
+<button class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-bright hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+<span class="w-10 text-center font-body-md text-sm tabular-nums text-on-surface">2</span>
+<button class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-bright hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[16px]">add</span></button>
+</div>
+<span class="font-body-md tabular-nums text-outline text-xs">@ $2.75/ea</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 pb-4 border-b border-outline-variant">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-[15px] text-on-surface font-medium">Wireless Scanner V2</span>
+<span class="font-body-md text-sm text-on-surface tabular-nums">$145.00</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center border border-outline-variant rounded bg-surface-container-highest h-8">
+<button class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-bright hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[16px]">remove</span></button>
+<span class="w-10 text-center font-body-md text-sm tabular-nums text-on-surface">1</span>
+<button class="w-8 h-full flex items-center justify-center text-on-surface-variant hover:bg-surface-bright hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[16px]">add</span></button>
+</div>
+<span class="font-body-md tabular-nums text-outline text-xs">@ $145.00/ea</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-high p-4 border-t border-outline-variant flex flex-col gap-3">
+<div class="flex justify-between items-center text-on-surface-variant font-body-md text-sm">
+<span>Subtotal</span>
+<span class="tabular-nums">$173.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-body-md text-sm">
+<span>Tax (8.5%)</span>
+<span class="tabular-nums">$14.71</span>
+</div>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-outline-variant">
+<span class="font-title-md text-title-md text-on-surface">Total</span>
+<span class="font-title-md text-title-md tabular-nums text-primary">$187.71</span>
+</div>
+<button class="w-full mt-3 bg-secondary hover:bg-secondary-fixed text-on-secondary py-3 rounded-lg font-title-md text-[16px] transition-colors shadow-sm flex items-center justify-center gap-2">
+                        Complete Sale
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

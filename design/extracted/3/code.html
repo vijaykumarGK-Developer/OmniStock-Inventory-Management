@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StockPro - POS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "secondary-fixed": "#89f5e7",
+                "primary-fixed": "#e2dfff",
+                "on-primary-container": "#dad7ff",
+                "on-tertiary-container": "#ffd2bd",
+                "tertiary-fixed": "#ffdbca",
+                "inverse-surface": "#dae2fd",
+                "on-surface-variant": "#c7c4d8",
+                "inverse-on-surface": "#283044",
+                "surface-variant": "#2d3449",
+                "surface": "#0b1326",
+                "surface-container-high": "#222a3d",
+                "tertiary-fixed-dim": "#ffb690",
+                "on-tertiary": "#552100",
+                "on-secondary": "#003732",
+                "surface-container": "#171f33",
+                "on-secondary-fixed": "#00201d",
+                "surface-bright": "#31394d",
+                "primary-container": "#4f46e5",
+                "primary-fixed-dim": "#c3c0ff",
+                "tertiary-container": "#a04500",
+                "outline-variant": "#464555",
+                "on-surface": "#dae2fd",
+                "surface-container-lowest": "#060e20",
+                "surface-dim": "#0b1326",
+                "background": "#060e20",
+                "error": "#ffb4ab",
+                "on-secondary-container": "#00302b",
+                "on-tertiary-fixed": "#341100",
+                "secondary-container": "#29a195",
+                "secondary": "#6bd8cb",
+                "on-primary": "#1d00a5",
+                "on-error": "#690005",
+                "surface-container-low": "#131b2e",
+                "error-container": "#93000a",
+                "on-tertiary-fixed-variant": "#783200",
+                "on-primary-fixed": "#0f0069",
+                "on-primary-fixed-variant": "#3323cc",
+                "tertiary": "#ffb690",
+                "primary": "#4f46e5",
+                "on-error-container": "#ffdad6",
+                "secondary-fixed-dim": "#6bd8cb",
+                "on-secondary-fixed-variant": "#005049",
+                "outline": "#918fa1",
+                "on-background": "#dae2fd",
+                "inverse-primary": "#4d44e3",
+                "surface-tint": "#c3c0ff",
+                "surface-container-highest": "#2d3449"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "2xl": "1rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "base": "8px",
+                "margin-mobile": "16px",
+                "md": "24px",
+                "lg": "40px",
+                "sm": "12px",
+                "xl": "64px",
+                "margin-desktop": "48px",
+                "gutter": "24px",
+                "xs": "4px"
+        },
+        "fontFamily": {
+                "body-md": [
+                        "Inter"
+                ],
+                "headline-lg": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Inter"
+                ],
+                "label-sm": [
+                        "Inter"
+                ],
+                "title-md": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Inter"
+                ],
+                "data-tabular": ["JetBrains Mono"]
+        },
+        "fontSize": {
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "letterSpacing": "0",
+                                "fontWeight": "400"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "letterSpacing": "0",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "40px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "24px",
+                        {
+                                "lineHeight": "32px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px", 
+                        {
+                                "lineHeight": "32px", 
+                                "letterSpacing": "-0.01em", 
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-sm": [
+                        "12px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "500"
+                        }
+                ],
+                "label-uppercase": [
+                        "12px", 
+                        {
+                                "lineHeight": "16px", 
+                                "letterSpacing": "0.05em", 
+                                "fontWeight": "600"
+                        }
+                ],
+                "title-md": [
+                        "20px",
+                        {
+                                "lineHeight": "28px",
+                                "letterSpacing": "0.01em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "title-sm": [
+                        "18px", 
+                        {
+                                "lineHeight": "24px", 
+                                "fontWeight": "600"
+                        }
+                ],
+                "display-lg": [
+                        "36px",
+                        {
+                                "lineHeight": "44px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "data-tabular": [
+                        "14px", 
+                        {
+                                "lineHeight": "20px", 
+                                "fontWeight": "500"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .bg-gradient-secondary {
+            background: linear-gradient(135deg, #29a195 0%, #14b8a6 100%);
+        }
+        .bg-gradient-tertiary {
+            background: linear-gradient(135deg, #ffb690 0%, #f97316 100%);
+        }
+        .shadow-neon-primary {
+            box-shadow: 0 4px 20px -2px rgba(79, 70, 229, 0.4);
+        }
+        .shadow-soft {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex antialiased selection:bg-primary selection:text-white">
+<aside class="w-[280px] h-screen fixed left-0 top-0 bg-surface border-r border-surface-container-highest flex flex-col py-6 px-4 gap-md z-50 shadow-soft">
+<div class="flex flex-col mb-base px-2">
+<h1 class="font-display-lg text-display-lg bg-clip-text text-transparent bg-gradient-to-r from-primary-fixed to-secondary-fixed">StockPro</h1>
+<span class="font-label-uppercase text-label-uppercase text-on-surface-variant opacity-80 mt-1">Enterprise v2.0</span>
+</div>
+<button class="w-full bg-gradient-primary shadow-neon-primary text-white font-title-sm text-title-sm py-3 rounded-xl flex items-center justify-center gap-2 mb-2 hover:opacity-90 transition-opacity transform hover:scale-[1.02] active:scale-[0.98]">
+<span class="material-symbols-outlined">add</span>
+            New Entry
+        </button>
+<nav class="flex-1 flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-uppercase text-label-uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary-fixed-dim transition-colors">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-uppercase text-label-uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary-fixed-dim transition-colors">inventory_2</span>
+                Products
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-uppercase text-label-uppercase text-white bg-surface-container-high border-l-4 border-primary shadow-sm transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[20px] text-primary-fixed" style="font-variation-settings: 'FILL' 1;">point_of_sale</span>
+                Sales/POS
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-uppercase text-label-uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary-fixed-dim transition-colors">conveyor_belt</span>
+                Suppliers
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-uppercase text-label-uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary-fixed-dim transition-colors">analytics</span>
+                Analytics
+            </a>
+</nav>
+<div class="flex flex-col gap-2 mt-auto pt-4 border-t border-surface-container-highest">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-uppercase text-label-uppercase text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary-fixed-dim transition-colors">help</span>
+                Help Center
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-label-uppercase text-label-uppercase text-on-surface-variant hover:text-error hover:bg-error-container/20 transition-all duration-200 ease-in-out group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-error transition-colors">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<main class="ml-[280px] flex-1 p-gutter grid grid-cols-1 xl:grid-cols-12 gap-gutter min-h-screen">
+<div class="xl:col-span-8 flex flex-col gap-md h-full">
+<header class="flex justify-between items-end pb-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-background">Point of Sale</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Register 04 • Cashier: Admin</p>
+</div>
+</header>
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-4 text-outline-variant">search</span>
+<input class="w-full bg-surface-container border border-surface-container-highest rounded-2xl pl-12 pr-4 py-4 font-body-md text-body-md text-on-surface focus:border-primary-fixed focus:ring-2 focus:ring-primary-fixed/20 outline-none transition-all shadow-sm placeholder:text-on-surface-variant" placeholder="Scan barcode or search by product name/SKU..." type="text"/>
+<button class="absolute right-3 bg-primary-container text-white p-2 rounded-xl hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[20px]">barcode_scanner</span>
+</button>
+</div>
+<div class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-5 py-2 bg-primary-container text-white rounded-full font-label-sm text-label-sm uppercase tracking-wider whitespace-nowrap shadow-sm border border-primary">All Items</button>
+<button class="px-5 py-2 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high hover:border-outline-variant rounded-full font-label-sm text-label-sm uppercase tracking-wider whitespace-nowrap transition-colors">Packaging</button>
+<button class="px-5 py-2 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high hover:border-outline-variant rounded-full font-label-sm text-label-sm uppercase tracking-wider whitespace-nowrap transition-colors">Equipment</button>
+<button class="px-5 py-2 bg-surface-container border border-surface-container-highest text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high hover:border-outline-variant rounded-full font-label-sm text-label-sm uppercase tracking-wider whitespace-nowrap transition-colors">Safety Gear</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 overflow-y-auto pr-2 pb-4">
+<div class="bg-surface border border-surface-container-highest rounded-2xl p-4 flex flex-col gap-3 shadow-sm hover:shadow-soft hover:border-primary-fixed-dim transition-all duration-300 cursor-pointer group relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-full aspect-square bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" data-alt="A close-up studio shot of a heavy-duty cardboard shipping box against a clean, minimal white background. The lighting is bright and even, highlighting the texture of the corrugated material. The overall aesthetic is functional and industrial, suited for a modern logistics interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmKh5Z1WKyym4lc_V5itFRAKPSZqreXmhSHi_drGYZRCO14u5y4L6B1maAVZcRE91Nig5QPHQlHaIxDb3lMHCjt-51KLy2y0pIDafZRJmuv2SguPLuVlFvtonL2IIBi8dOPnbBimAcWdoLBiFqsW2nUQuHeVQPiA-UpguUSJuM8sokyssfj32yQ2ThFIPXj6ELUvG80rupNhsfgcvHelTGj9HEFxP6Zgoxomzms9Vmx_EhzQ55Nh9UMST4DawwE7FLMS6NLqVoIDTn"/>
+</div>
+<div class="flex flex-col z-10">
+<span class="font-body-sm text-body-sm text-on-surface font-medium line-clamp-1 group-hover:text-primary-fixed transition-colors">Heavy Duty Box L</span>
+<span class="font-data-tabular text-data-tabular text-secondary-fixed mt-1 text-lg">$4.50</span>
+</div>
+</div>
+<div class="bg-surface border border-surface-container-highest rounded-2xl p-4 flex flex-col gap-3 shadow-sm hover:shadow-soft hover:border-primary-fixed-dim transition-all duration-300 cursor-pointer group relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-full aspect-square bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" data-alt="A roll of clear industrial packing tape resting on a sleek metallic surface. High-key lighting creates sharp reflections on the plastic film. The composition is tight and utilitarian, emphasizing the object's purpose in a warehouse setting within a light-mode corporate design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD6B9nh1FMSg5V3Ft7eZxg0Sj2Ui_UZh-Axk9NsxUbQdpC-9Ek4CAe_jdFBDHO9WWcmk96c6XzZS7g0mruJx2kOwuYA5QKc2vmuecfnfQmjC8Mpd2BJ7JCD9ck5kW5xCy-XB1wVAELmjeOoMdGGFh7zagielfwV0LB7MjpW2hwmo8CFxHoSOqoOjYyftkJq0aaw0ECx4esjBlfFgSU8LZuw1OCOoq0bxWBX75Qd1DAKMbX_i2vxIa1Tpi8wrgTKOxq0hmVQe95ZV-V"/>
+</div>
+<div class="flex flex-col z-10">
+<span class="font-body-sm text-body-sm text-on-surface font-medium line-clamp-1 group-hover:text-primary-fixed transition-colors">Packing Tape Clear</span>
+<span class="font-data-tabular text-data-tabular text-secondary-fixed mt-1 text-lg">$2.75</span>
+</div>
+</div>
+<div class="bg-surface border border-error/30 rounded-2xl p-4 flex flex-col gap-3 shadow-sm hover:shadow-soft hover:border-error transition-all duration-300 cursor-pointer group relative overflow-hidden opacity-75">
+<div class="w-full aspect-square bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden relative">
+<div class="absolute top-2 right-2 px-2 py-1 rounded bg-error/20 border border-error text-error font-label-uppercase text-[10px] tracking-wider z-20 backdrop-blur-sm">OUT</div>
+<img class="w-full h-full object-cover grayscale opacity-50 group-hover:scale-110 transition-transform duration-500" data-alt="A yellow industrial safety helmet shown from a slight angle on a stark white backdrop. The hard hat appears rugged yet clean. The lighting is clinical and uniform. The image conveys safety and compliance in a professional logistics or construction environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIRjwxSmnUM31nAP-DbwZDpQQ4vwtOIyuPAXsn7MU7TKXOKZyKhDxTZibygDwII-kli-H2Q5F-A8dxRYsUan_MDrQttaV1d6GB3iZRmbi1i9rdmy0eqA5dMknFg9ilEWY9rgwnFhJubHVaFaU9SG6EDmx2qY0Uc_nxBlsTJo5kiXcoa2ktLFS1z9bg5zmwrj6DKd1biTVNFb5XYxzSuYDtaHsDKFTi5N3xq4mo6fiGTppx-r1oXCUBQryxg9ROie1esy5vTCjQnnNt"/>
+</div>
+<div class="flex flex-col z-10">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium line-clamp-1">Safety Helmet Ylw</span>
+<div class="flex items-center justify-between mt-1">
+<span class="font-data-tabular text-data-tabular text-on-surface-variant text-lg">$24.00</span>
+</div>
+</div>
+</div>
+<div class="bg-surface border border-surface-container-highest rounded-2xl p-4 flex flex-col gap-3 shadow-sm hover:shadow-soft hover:border-primary-fixed-dim transition-all duration-300 cursor-pointer group relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-full aspect-square bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" data-alt="A handheld digital barcode scanner resting on a modern, light grey desk. The scanner features a dark grey rugged casing with a small digital display. The lighting highlights its ergonomic design. The mood is efficient, technological, and perfectly suited for a high-end inventory management UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVo67c_PJgW24roYXaR_MxIWfbFgyQooyBwxSgdR6iNaEFv3nWo934tM1gBQPp5nJS8QUjtuAYRDl7FTFEU1nEe01HnbHYJVIvgvp2wgC5zmUvTr-aR-g90mUkGEwgGmYo905zOeKTz44_olT7KNMQDMbvzcZ2X9wERnfBt9sqR3Kr8XK7W73nj7fNHLV0Sx3PsCvSj6tmAUDLqd18p60DfY-MzHc2K0Qv0GBScR5yAXSs2tvMnDcCr9QbEKNUCuNne_Qrh9FQoCcw"/>
+</div>
+<div class="flex flex-col z-10">
+<span class="font-body-sm text-body-sm text-on-surface font-medium line-clamp-1 group-hover:text-primary-fixed transition-colors">Wireless Scanner V2</span>
+<span class="font-data-tabular text-data-tabular text-secondary-fixed mt-1 text-lg">$145.00</span>
+</div>
+</div>
+<div class="bg-surface border border-surface-container-highest rounded-2xl p-4 flex flex-col gap-3 shadow-sm hover:shadow-soft hover:border-primary-fixed-dim transition-all duration-300 cursor-pointer group relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-full aspect-square bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant group-hover:text-primary-fixed transition-colors transform group-hover:scale-110 duration-300">pallet</span>
+</div>
+<div class="flex flex-col z-10">
+<span class="font-body-sm text-body-sm text-on-surface font-medium line-clamp-1 group-hover:text-primary-fixed transition-colors">Standard Wood Pallet</span>
+<span class="font-data-tabular text-data-tabular text-secondary-fixed mt-1 text-lg">$18.50</span>
+</div>
+</div>
+<div class="bg-surface border border-surface-container-highest rounded-2xl p-4 flex flex-col gap-3 shadow-sm hover:shadow-soft hover:border-primary-fixed-dim transition-all duration-300 cursor-pointer group relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-full aspect-square bg-surface-container-low rounded-xl flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant group-hover:text-primary-fixed transition-colors transform group-hover:scale-110 duration-300">local_shipping</span>
+</div>
+<div class="flex flex-col z-10">
+<span class="font-body-sm text-body-sm text-on-surface font-medium line-clamp-1 group-hover:text-primary-fixed transition-colors">Freight Charge Base</span>
+<span class="font-data-tabular text-data-tabular text-secondary-fixed mt-1 text-lg">$50.00</span>
+</div>
+</div>
+</div>
+</div>
+<div class="xl:col-span-4 h-[calc(100vh-48px)] sticky top-gutter">
+<div class="bg-surface border border-surface-container-highest rounded-2xl shadow-soft h-full flex flex-col overflow-hidden relative">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-primary"></div>
+<div class="p-5 border-b border-surface-container-highest flex justify-between items-center bg-surface/50 backdrop-blur-md">
+<h3 class="font-title-md text-title-md text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed">shopping_cart</span>
+        Current Cart
+    </h3>
+<button class="text-error hover:bg-error-container/20 p-2 rounded-lg transition-colors flex items-center justify-center" title="Clear Cart">
+<span class="material-symbols-outlined text-[20px]">delete_sweep</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-5 flex flex-col gap-5">
+<div class="flex flex-col gap-3 pb-5 border-b border-surface-container-highest group">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-body-md text-on-background font-medium group-hover:text-primary-fixed transition-colors">Heavy Duty Box L</span>
+<span class="font-data-tabular text-data-tabular text-on-background text-lg">$22.50</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center border border-surface-container-highest rounded-lg bg-surface-container h-9 overflow-hidden">
+<button class="w-9 h-full flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">remove</span></button>
+<span class="w-12 text-center font-data-tabular text-data-tabular text-on-surface font-medium">5</span>
+<button class="w-9 h-full flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">add</span></button>
+</div>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant text-sm">@ $4.50/ea</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-5 border-b border-surface-container-highest group">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-body-md text-on-background font-medium group-hover:text-primary-fixed transition-colors">Packing Tape Clear</span>
+<span class="font-data-tabular text-data-tabular text-on-background text-lg">$5.50</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center border border-surface-container-highest rounded-lg bg-surface-container h-9 overflow-hidden">
+<button class="w-9 h-full flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">remove</span></button>
+<span class="w-12 text-center font-data-tabular text-data-tabular text-on-surface font-medium">2</span>
+<button class="w-9 h-full flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">add</span></button>
+</div>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant text-sm">@ $2.75/ea</span>
+</div>
+</div>
+<div class="flex flex-col gap-3 pb-5 border-b border-surface-container-highest group">
+<div class="flex justify-between items-start">
+<span class="font-body-md text-body-md text-on-background font-medium group-hover:text-primary-fixed transition-colors">Wireless Scanner V2</span>
+<span class="font-data-tabular text-data-tabular text-on-background text-lg">$145.00</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center border border-surface-container-highest rounded-lg bg-surface-container h-9 overflow-hidden">
+<button class="w-9 h-full flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">remove</span></button>
+<span class="w-12 text-center font-data-tabular text-data-tabular text-on-surface font-medium">1</span>
+<button class="w-9 h-full flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[18px]">add</span></button>
+</div>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant text-sm">@ $145.00/ea</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container/50 p-5 border-t border-surface-container-highest flex flex-col gap-3 backdrop-blur-md">
+<div class="flex justify-between items-center text-on-surface-variant font-body-sm text-body-sm">
+<span>Subtotal</span>
+<span class="font-data-tabular text-data-tabular">$173.00</span>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant font-body-sm text-body-sm">
+<span>Tax (8.5%)</span>
+<span class="font-data-tabular text-data-tabular">$14.71</span>
+</div>
+<div class="flex justify-between items-end mt-2 pt-4 border-t border-surface-container-highest border-dashed">
+<span class="font-title-md text-title-md text-on-background">Total</span>
+<span class="font-display-lg text-display-lg font-data-tabular text-data-tabular text-primary-fixed leading-none">$187.71</span>
+</div>
+<button class="w-full mt-4 bg-gradient-primary shadow-neon-primary hover:opacity-90 text-white py-4 rounded-xl font-title-md text-title-md transition-all transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2">
+                        Complete Sale
+                        <span class="material-symbols-outlined text-[24px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

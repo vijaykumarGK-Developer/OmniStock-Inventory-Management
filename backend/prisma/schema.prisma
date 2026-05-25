@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id             Int              @id @default(autoincrement())
+  name           String
+  email          String           @unique
+  password       String
+  role           String           @default("staff")
+  status         String           @default("active")
+  createdAt      DateTime         @default(now())
+  sales          Sale[]
+  purchases      Purchase[]
+  stockMovements StockMovement[]
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  products Product[]
+}
+
+model Product {
+  id             Int              @id @default(autoincrement())
+  name           String
+  sku            String           @unique
+  description    String?
+  categoryId     Int
+  category       Category         @relation(fields: [categoryId], references: [id])
+  brand          String?
+  price          Float
+  costPrice      Float?
+  stock          Int              @default(0)
+  minStock       Int              @default(5)
+  unit           String           @default("pcs")
+  imageUrl       String?
+  createdAt      DateTime         @default(now())
+  stockMovements StockMovement[]
+  purchaseItems  PurchaseItem[]
+
+  @@index([name, sku])
+}
+
+model Supplier {
+  id             Int        @id @default(autoincrement())
+  name           String
+  contactPerson  String?
+  phone          String
+  email          String?
+  address        String?
+  city           String?
+  state          String?
+  status         String     @default("active")
+  createdAt      DateTime   @default(now())
+  purchases      Purchase[]
+}
+
+model Sale {
+  id            Int        @id @default(autoincrement())
+  invoiceNo     String     @unique
+  customerName  String     @default("Walk-in Customer")
+  customerPhone String?
+  subtotal      Float
+  tax           Float      @default(0)
+  discount      Float      @default(0)
+  total         Float
+  paymentMethod String
+  userId        Int
+  user          User       @relation(fields: [userId], references: [id])
+  items         SaleItem[]
+  createdAt     DateTime   @default(now())
+}
+
+model SaleItem {
+  id           Int    @id @default(autoincrement())
+  saleId       Int
+  sale         Sale   @relation(fields: [saleId], references: [id], onDelete: Cascade)
+  productId    Int
+  productName  String
+  quantity     Int
+  unitPrice    Float
+  total        Float
+}
+
+model Purchase {
+  id           Int            @id @default(autoincrement())
+  poNumber     String         @unique
+  supplierId   Int
+  supplier     Supplier       @relation(fields: [supplierId], references: [id])
+  orderDate    DateTime       @default(now())
+  expectedDate DateTime?
+  total        Float          @default(0)
+  status       String         @default("pending")
+  notes        String?
+  userId       Int
+  user         User           @relation(fields: [userId], references: [id])
+  items        PurchaseItem[]
+  createdAt    DateTime       @default(now())
+}
+
+model PurchaseItem {
+  id         Int      @id @default(autoincrement())
+  purchaseId Int
+  purchase   Purchase @relation(fields: [purchaseId], references: [id], onDelete: Cascade)
+  productId  Int
+  product    Product  @relation(fields: [productId], references: [id])
+  quantity   Int
+  unitPrice  Float
+  total      Float
+}
+
+model StockMovement {
+  id          Int      @id @default(autoincrement())
+  productId   Int
+  product     Product  @relation(fields: [productId], references: [id])
+  type        String
+  quantity    Int
+  reference   String
+  referenceId String?
+  notes       String?
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  createdAt   DateTime @default(now())
+
+  @@index([productId, createdAt])
+}
